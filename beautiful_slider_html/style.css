@@ -1,0 +1,53 @@
+
+*{
+  margin : 30 auto;
+  left: 0;
+  background: yellowgreen
+}
+
+@keyframes slidy {
+  0% {
+    left: 0%;
+  }
+  20% {
+    left: 0%;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  50% {
+    left: -200%;
+  }
+  70% {
+    left: -200%;
+  }
+  75% {
+    left: -300%;
+  }
+  95% {
+    left: -300%;
+  }
+  100% {
+    left: -400%;
+  }
+}
+
+div#imgGalery {
+  overflow: hidden;
+  height: 500px;
+}
+div#imgGalery figure img {
+  width: 20%;
+  float: left;
+  height: 500px;
+}
+div#imgGalery figure {
+  position: relative;
+  width: 500%;
+
+  animation: 20s slidy infinite;
+  
+}

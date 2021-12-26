@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>UserName</title>
+</head>
+
+<body>
+    <div class="container align-items-center flex-column mt-4">
+        <div class="firstRequest">
+            <h1>Github Username Widget</h1>
+            <div class="d-flex">
+                <div class="p-2 username-Github1">
+                    <input type="email" class="form-control1 col" placeholder="Github username">
+                </div>
+                <div class="p-2">
+                    <button type="submit" class="btn button1 btn-primary">submit</button>
+                </div>
+
+            </div>
+            <ul>
+            </ul>
+        </div>
+    
+        <script>
+
+            const ulElements = document.querySelector("ul");
+            const submitButton = document.querySelectorAll(".button1");
+            
+            console.log(submitButton);
+            
+            
+            submitButton[0].addEventListener("click", init);
+            
+            function init() {
+                
+                const userName = document.querySelector(".form-control1").value;
+                
+                console.log(userName);
+                
+                const urlUsername = `https://api.github.com/users/${userName}/repos`;
+                
+                console.log(urlUsername);
+                
+                fetch(urlUsername).then(response => {
+                    
+                    
+                    return response.json();
+                    
+                }).then(data => {
+                    
+                    data.map(value => {
+                        
+                        const listElement = document.createElement("li");
+
+                        const aElement = document.createElement("a");
+
+                        aElement.href = value.html_url;
+                        aElement.innerHTML = value.name;
+
+                        listElement.append(aElement);
+                        ulElements.append(listElement)
+
+
+
+                    
+                    })
+                    
+                })
+
+
+            }
+        </script>
+</body>
+
+</html>
